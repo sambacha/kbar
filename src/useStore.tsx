@@ -1,14 +1,16 @@
-import { deepEqual } from "fast-equals";
 import * as React from "react";
-import { IKBarContext } from ".";
-import { ActionInterface } from "./action";
+
 import {
   BaseAction,
+  KBarOptions,
   KBarProviderProps,
   KBarState,
-  KBarOptions,
   VisualState,
 } from "./types";
+
+import { ActionInterface } from "./action";
+import { IKBarContext } from ".";
+import { deepEqual } from "fast-equals";
 
 type useStoreProps = KBarProviderProps;
 
@@ -109,16 +111,6 @@ export default function useStore(props: useStoreProps) {
           return visualState;
         },
         registerActions,
-        toggle: () =>
-          setState((state) => ({
-            ...state,
-            visualState: [
-              VisualState.animatingOut,
-              VisualState.hidden,
-            ].includes(state.visualState)
-              ? VisualState.animatingIn
-              : VisualState.animatingOut,
-          })),
         setActiveIndex: (cb) =>
           setState((state) => ({
             ...state,
