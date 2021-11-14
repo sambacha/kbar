@@ -12,7 +12,7 @@ type useKBarReturnType<S = null> = S extends null
   : S & BaseKBarReturnType;
 
 export default function useKBar<C = null>(
-  collector?: (state: KBarState) => C
+  collector?: (state: KBarState) => C,
 ): useKBarReturnType<C> {
   const { query, getState, subscribe, options } = React.useContext(KBarContext);
 
@@ -25,7 +25,7 @@ export default function useKBar<C = null>(
       query,
       options,
     }),
-    [query, options]
+    [query, options],
   );
 
   const [render, setRender] = React.useState(onCollect(collected.current));
@@ -35,7 +35,7 @@ export default function useKBar<C = null>(
     if (collectorRef.current) {
       unsubscribe = subscribe(
         (current) => (collectorRef.current as any)(current),
-        (collected) => setRender(onCollect(collected))
+        (collected) => setRender(onCollect(collected)),
       );
     }
     return () => {

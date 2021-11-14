@@ -1,29 +1,26 @@
 {
   "compilerOptions": {
-    "jsx": "react",
-    "declaration": true,
-    "target": "es5",
     "lib": [
       "es5",
       "DOM"
     ],
+    "target": "esnext",
     "strict": true,
+    "jsx": "react",
     "noImplicitAny": false,
+    "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
+    "skipLibCheck": true,
     "moduleResolution": "node",
-    "rootDir": "src",
-    "outDir": "lib",
-    "module": "commonjs",
+    "baseUrl": ".",
+    "paths": {
+      "kbar": ["./src"]
+    },
     "typeRoots": [
       "src/types",
       "node_modules/@types"
-    ],
+    ]
   },
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "example"
-  ]
+  "include": ["src/**/*", "tests/**/*"],
+  "exclude": ["node_modules", "dist", "example"]
 }
